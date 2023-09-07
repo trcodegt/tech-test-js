@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <section id="challenge">
+    <!--
+      Instructions: in this section you will find multiple shapes with different
+      colors stacked on top of each other. Using CSS, try to accomplish the
+      following:
+        - Bring the red square all the way to the front
+        - Push the green triangle all the way to the back
+        - Move the green rectangle on top of the red rectangle
+    -->
+
+    <style>
+      div {
+        display: inline-block;
+      }
+
+      html {
+        background-color: lightgray;
+      }
+
+
+      .group {
+        position: relative;
+        z-index: 1;
+      }
+
+      .group div {
+        position: fixed;
+        top: 20%;
+        left: 40%;
+      }
+
+      .purple { background-color: rebeccapurple; }
+      .red { background-color: red; }
+      .green { background-color: green; }
+      .yellow { background-color: yellow; }
+
+      .square {
+        height: 100px;
+        width: 100px;
+      }
+
+      .rectangle {
+        height: 100px;
+        width: 200px;
+      }
+
+      .circle {
+        border-radius: 50px;
+        height: 100px;
+        width: 100px;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid transparent;
+      }
+
+      .triangle.red {
+        background-color: transparent;
+        border-bottom-color: red;
+      }
+
+      .triangle.green {
+        background-color: transparent;
+        border-bottom-color: green;
+      }
+
+      .triangle.yellow {
+        background-color: transparent;
+        border-bottom-color: yellow;
+      }
+
+      .triangle.purple {
+        background-color: transparent;
+        border-bottom-color: rebeccapurple;
+      }
+
+      .square.red {
+        transform: translate(70px, 10px);
+        z-index: 1;
+      }
+
+      .circle.green {
+        transform: translate(-10px, -30px);
+        z-index: 1;
+      }
+
+      .rectangle.yellow {
+        transform: translate(-90px, 90px);
+        z-index: 1;
+      }
+
+      .triangle.purple {
+        transform: translate(-10px, 40px);
+        z-index: 1;
+      }
+
+      .square.purple {
+        transform: translate(40px, -70px);
+        z-index: 1;
+      }
+
+      .circle.yellow {
+        transform: translate(120px, 100px);
+        z-index: 1;
+      }
+
+      .rectangle.green {
+        transform: translate(200px, 100px);
+        z-index: 1;
+      }
+
+      .triangle.red {
+        transform: translate(-100px, -90px);
+        z-index: 1;
+      }
+
+      .square.yellow {
+        transform: translate(-180px, -10px);
+        z-index: 1;
+      }
+
+      .circle.purple {
+        transform: translate(-120px, 40px);
+        z-index: 1;
+      }
+
+      .rectangle.red {
+        transform: translate(90px, 180px);
+        z-index: 1;
+      }
+
+      .triangle.green {
+        transform: translate(10px, 160px);
+        z-index: 1;
+      }
+
+
+
+      /* Your code here *******************************************************/
+
+      .square.red  {
+        z-index: 5;
+      }
+      .rectangle.green {
+        transform: translateY(-90px);
+        z-index: 1;
+      }
+      .triangle.purple {
+        z-index: 3;
+      }
+      .rectangle.yellow {
+        z-index: 2;
+      }
+      .rectangle.red {
+        z-index: 2;
+      }
+      .triangle.green {
+        z-index: -1;
+      }
+
+    </style>
+
+
+    <div>
+      <div class="group">
+        <div class="square red"></div>
+        <div class="circle green"></div>
+        <div class="rectangle yellow"></div>
+        <div class="triangle purple"></div>
+        <div class="square purple"></div>
+        <div class="circle yellow"></div>
+      </div>
+      <div class="group">
+        <div class="rectangle green"></div>
+        <div class="triangle red"></div>
+      </div>
+      <div class="group">
+        <div class="square yellow"></div>
+        <div class="circle purple"></div>
+        <div class="rectangle red"></div>
+      </div>
+      <div class="group">
+        <div class="triangle green"></div>
+      </div>
+    </div>
+
+  </section>
+
+</body>
+</html>

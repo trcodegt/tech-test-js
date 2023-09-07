@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <section id="challenge">
+    <!--
+    Challenge X: In this section, we have a list of post containers. The goal is
+    to emulate a network request, populating each of the containers with two
+    elements, a title and a content, attaching a custom 'onLoaded' event to each
+    post container and raising it once the data has been added. To make the
+    loading behavior more obvious, you will need to randomly add a delay before each
+    post load, allowing a maximum of 10 seconds of wait time. The animation
+    should also consist of two elements, an image and a text.
+    Complete the rest of the code making use of the 'showLoadingAnimation'
+    function without altering it.
+    Image and texts samples are provided below. Use the reference video to have
+    a better understanding of the final result.
+
+    Post title: 'Title'
+    Post content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus nemo ipsum optio quae commodi modi velit eius ipsam nihil explicabo, quisquam quos eum cum obcaecati minus, provident fugit, illo repudiandae.'
+    Loading image: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/SVG_animated_loading_icon.svg'
+    Loading text: 'Loading...'
+
+    Reference video: https://raw.githubusercontent.com/daniel-kc/fe-test/main/references/c4-js-loading.gif
+  -->
+
+    <style>
+      .c4-container {
+        margin: 50px auto;
+        max-width: 800px;
+        width: 100%;
+      }
+    </style>
+
+    <!-- do not change the markup -->
+    <div class="c4-container">
+      <div class="post">
+      </div>
+      <hr>
+
+      <div class="post">
+      </div>
+      <hr>
+
+      <div class="post">
+      </div>
+      <hr>
+
+      <div class="post">
+      </div>
+      <hr>
+
+      <div class="post">
+      </div>
+    </div>
+
+    <script>
+      const posts = document.querySelectorAll('div.post');
+
+      function showLoadingAnimation(posts, animationElement) {
+        posts.forEach(post => {
+          const delay = Math.random() * 5000;
+          post.appendChild(animationElement.cloneNode(true));
+
+         setTimeout(() => {
+            const h1El = document.createElement('h2');
+            h1El.textContent = 'Title';
+            const cEl = document.createElement('p');
+            cEl.textContent = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries';
+
+            const loadingAnimation = post.querySelector('.loading-animation');
+            post.removeChild(loadingAnimation);
+            
+            post.appendChild(h1El);
+            post.appendChild(cEl);
+
+            post.appendChild(animationElement.cloneNode(true));
+
+            const event = new Event('onLoaded');
+            post.dispatchEvent(event);
+          }, delay);
+        });
+      }
+
+
+
+      // Your code here ********************************************************
+
+      const loadingContainer = document.createElement('div');
+      loadingContainer.classList.add('loading-animation');
+      loadingContainer.innerHTML = `
+        <img src="./assets/loading.svg" alt="Loading animation">
+        <p>Loading...</p>
+      `;
+
+      // Function call
+      showLoadingAnimation(posts, loadingContainer);
+
+    </script>
+
+  </section>
+
+</body>
+</html>
